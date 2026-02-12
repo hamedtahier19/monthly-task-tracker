@@ -108,6 +108,10 @@ const translations = {
 export const AppProvider = ({ children }) => {
     const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
     const [language, setLanguage] = useState(localStorage.getItem('language') || 'ar');
+    const [currentUser, setCurrentUser] = useState(() => {
+        const savedUser = localStorage.getItem('currentUser');
+        return savedUser ? JSON.parse(savedUser) : null;
+    });
 
     useEffect(() => {
         document.documentElement.setAttribute('data-theme', theme);
@@ -120,6 +124,14 @@ export const AppProvider = ({ children }) => {
         localStorage.setItem('language', language);
     }, [language]);
 
+    useEffect(() => {
+        if (currentUser) {
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+        } else {
+            localStorage.removeItem('currentUser');
+        }
+    }, [currentUser]);
+
     const toggleTheme = () => {
         setTheme(prev => prev === 'light' ? 'dark' : 'light');
     };
@@ -128,12 +140,52 @@ export const AppProvider = ({ children }) => {
         setLanguage(prev => prev === 'ar' ? 'en' : 'ar');
     };
 
+    const login = async (email, password) => {
+        try {
+            const response = await fetch('http://localhost:5000/api/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                setCurrentUser(data.user);
+                return { success: true, user: data.user };
+            } else {
+                return { success: false, message: data.message };
+            }
+        } catch (error) {
+            console.error('Login error:', error);
+            return { success: false, message: 'خطأ في الاتصال بالخادم' };
+        }
+    };
+
+    const logout = () => {
+        setCurrentUser(null);
+    };
+
+    const isAdmin = () => {
+        return currentUser && currentUser.role === 'admin';
+    };
+
     const t = (key) => {
         return translations[language][key] || key;
     };
 
     return (
-        <AppContext.Provider value={{ theme, toggleTheme, language, toggleLanguage, t }}>
+        <AppContext.Provider value={{
+            theme,
+            toggleTheme,
+            language,
+            toggleLanguage,
+            t,
+            currentUser,
+            login,
+            logout,
+            isAdmin
+        }}>
             {children}
         </AppContext.Provider>
     );

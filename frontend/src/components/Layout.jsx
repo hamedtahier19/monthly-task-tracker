@@ -1,16 +1,17 @@
 import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { LayoutDashboard, CheckSquare, BarChart, Settings, LogOut, Moon, Sun, Languages } from 'lucide-react';
+import { LayoutDashboard, CheckSquare, BarChart, Settings, LogOut, Moon, Sun, Languages, Shield } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 
 const Layout = ({ children, title }) => {
     const location = useLocation();
     const navigate = useNavigate();
-    const { theme, toggleTheme, language, toggleLanguage, t } = useApp();
+    const { theme, toggleTheme, language, toggleLanguage, t, logout, isAdmin } = useApp();
 
     const isActive = (path) => location.pathname === path ? 'bg-primary-custom text-white' : 'text-secondary hover-bg-light';
 
     const handleLogout = () => {
+        logout();
         navigate('/login');
     };
 
@@ -23,6 +24,11 @@ const Layout = ({ children, title }) => {
                 </div>
 
                 <nav className="flex-grow-1 d-flex flex-column gap-2">
+                    {isAdmin() && (
+                        <Link to="/admin" className={`d-flex align-items-center gap-3 p-3 rounded text-decoration-none ${isActive('/admin')}`}>
+                            <Shield size={20} /> لوحة الأدمن
+                        </Link>
+                    )}
                     <Link to="/dashboard" className={`d-flex align-items-center gap-3 p-3 rounded text-decoration-none ${isActive('/dashboard')}`}>
                         <LayoutDashboard size={20} /> {t('dashboard')}
                     </Link>

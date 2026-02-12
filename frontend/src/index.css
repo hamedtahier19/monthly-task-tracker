@@ -144,3 +144,185 @@ body {
 .hero-gradient {
   background: linear-gradient(135deg, #EFF6FF 0%, #F8FAFC 100%);
 }
+
+[data-theme="dark"] .hero-gradient {
+  background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+}
+
+/* Additional Dark Mode Support */
+[data-theme="dark"] .bg-light {
+  background-color: var(--card-bg) !important;
+}
+
+[data-theme="dark"] .bg-white {
+  background-color: var(--card-bg) !important;
+}
+
+[data-theme="dark"] .text-dark {
+  color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .text-muted {
+  color: var(--text-secondary) !important;
+}
+
+[data-theme="dark"] .border {
+  border-color: var(--border-color) !important;
+}
+
+[data-theme="dark"] .card {
+  background-color: var(--card-bg);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .form-control,
+[data-theme="dark"] .form-select {
+  background-color: #0F172A;
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .form-control:focus,
+[data-theme="dark"] .form-select:focus {
+  background-color: #0F172A;
+  border-color: var(--primary-color);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .btn-light {
+  background-color: #334155;
+  border-color: #475569;
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .btn-light:hover {
+  background-color: #475569;
+  border-color: #64748B;
+}
+
+[data-theme="dark"] .btn-outline-secondary {
+  color: var(--text-secondary);
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .btn-outline-secondary:hover {
+  background-color: var(--card-bg);
+  color: var(--text-primary);
+}
+
+/* Responsive Design - Mobile First */
+@media (max-width: 576px) {
+  .container-custom {
+    padding: 0 0.75rem;
+  }
+
+  .custom-card {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+  }
+
+  .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Tablet */
+@media (min-width: 577px) and (max-width: 768px) {
+  .container-custom {
+    max-width: 720px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container-custom {
+    max-width: 960px;
+  }
+}
+
+/* Large Desktop */
+@media (min-width: 1025px) {
+  .container-custom {
+    max-width: 1200px;
+  }
+}
+
+/* Mobile Navigation */
+@media (max-width: 768px) {
+  .mobile-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--card-bg);
+    border-top: 1px solid var(--border-color);
+    padding: 0.5rem;
+    z-index: 1000;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .mobile-nav-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.75rem;
+    transition: color 0.2s;
+  }
+
+  .mobile-nav-item.active {
+    color: var(--primary-color);
+  }
+
+  .mobile-nav-item:hover {
+    color: var(--primary-color);
+  }
+}
+
+/* Utility Classes */
+.hover-bg-light:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] .hover-bg-light:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.min-vh-100 {
+  min-height: 100vh;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-color);
+}

@@ -7,6 +7,8 @@ import WeeklyTasksPage from './pages/WeeklyTasksPage';
 import AddEditTaskPage from './pages/AddEditTaskPage';
 import MonthlyProgressPage from './pages/MonthlyProgressPage';
 import SettingsPage from './pages/SettingsPage';
+import AdminDashboard from './pages/AdminDashboard';
+import UserTasksPage from './pages/UserTasksPage';
 
 import { AppProvider } from './context/AppContext';
 
@@ -23,6 +25,8 @@ function App() {
             <Route path="/add-task" element={<AddEditTaskPage />} />
             <Route path="/progress" element={<MonthlyProgressPage />} />
             <Route path="/settings" element={<SettingsPage />} />
+            <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="/admin/users/:userId/tasks" element={<UserTasksPage />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </div>
