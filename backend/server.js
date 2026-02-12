@@ -5,6 +5,10 @@ const path = require('path');
 const app = express();
 const PORT = 5000;
 
+// Import routes
+const authRoutes = require('./routes/auth');
+const usersRoutes = require('./routes/users');
+
 app.use(cors());
 app.use(express.json());
 
@@ -48,6 +52,10 @@ app.post('/api/tasks', (req, res) => {
         res.status(500).json({ message: 'Error saving tasks' });
     }
 });
+
+// Use routes
+app.use('/api/auth', authRoutes);
+app.use('/api/users', usersRoutes);
 
 // Start server
 if (!fs.existsSync(path.join(__dirname, 'data'))) {

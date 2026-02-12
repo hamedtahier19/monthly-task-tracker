@@ -1,0 +1,46 @@
+[
+  {
+    "id": "1770889586092",
+    "title": "الصلاة ",
+    "mainTask": "الصلاة ",
+    "tasks": [
+      {
+        "title": "مشاهدة مقطع ",
+        "done": false,
+        "type": "side"
+      },
+      {
+        "title": "تسبيح ",
+        "done": false,
+        "type": "side"
+      },
+      {
+        "title": "السن و الرواتب",
+        "done": false,
+        "type": "side"
+      }
+    ]
+  },
+  {
+    "id": "1770889675776",
+    "title": "الصلاة ",
+    "mainTask": "الصلاة ",
+    "tasks": [
+      {
+        "title": "تسبح ",
+        "done": false,
+        "type": "side"
+      },
+      {
+        "title": "السن والرواتب ",
+        "done": false,
+        "type": "side"
+      },
+      {
+        "title": "الاس",
+        "done": false,
+        "type": "side"
+      }
+    ]
+  }
+]
